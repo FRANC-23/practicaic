@@ -1,31 +1,30 @@
-# .github/workflows/ci.yml
-name: CI - Pruebas Unitarias
+name: Node.js CI
 
 on:
   push:
     branches:
       - main
-      - dev
+      -desarrollo
   pull_request:
     branches:
       - main
-      - dev
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout código
+    - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Instalar Node.js
+    - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '20'
+        node-version: '20' # O la versión de Node.js que estás utilizando
 
-    - name: Instalar dependencias
+    - name: Install dependencies
       run: npm install
 
-    - name: Ejecutar pruebas
-      run: npm test
+    # Paso 3: Usar npx para ejecutar Jest
+    - name: Run tests
+      run: npx jest
