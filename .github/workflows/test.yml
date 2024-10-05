@@ -1,31 +1,25 @@
-name: Node.js CI
+name: Prueba
 
 on:
   push:
     branches:
       - main
-      -desarrollo
-  pull_request:
-    branches:
-      - main
-      -desarrollo
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Clona el repositorio
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20' # O la versión de Node.js que estás utilizando
+      - name: configura nodejs  
+        uses: actions/setup-node@v3
+        with:
+            node-version: '20' 
 
-    - name: Install dependencies
-      run: npm install
+      - name: Instalar Dependencias
+        run: npm install
 
-    # Paso 3: Usar npx para ejecutar Jest
-    - name: Run tests
-      run: Npm test
+      - name: Ejecutar pruebas
+        run: npm test
