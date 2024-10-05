@@ -4,10 +4,11 @@ on:
   push:
     branches:
       - main
-      
+      -desarrollo
   pull_request:
     branches:
       - main
+      -desarrollo
 
 jobs:
   build:
@@ -27,4 +28,4 @@ jobs:
 
     # Paso 3: Usar npx para ejecutar Jest
     - name: Run tests
-      run: npx jest
+      run: Npm test
